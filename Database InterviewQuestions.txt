@@ -1,0 +1,5 @@
+-Union vs Union all
+-Primary Key vs UniqueKey
+-Clustered vs non Clustered
+-Functions vs StoredProcedure
+-Window Function 
