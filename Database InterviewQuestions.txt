@@ -1,5 +1,11 @@
 -Union vs Union all
 -Primary Key vs UniqueKey
 -Clustered vs non Clustered
--Functions vs StoredProcedure
+-Functions vs Stored Procedure
 -Window Function 
+-Joining
+    -InnerJoin
+    -Left Join
+    -Right Join
+    -Full Join
+    -Self Join
