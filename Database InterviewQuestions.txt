@@ -1,11 +1,56 @@
--Union vs Union all
--Primary Key vs UniqueKey
--Clustered vs non Clustered
--Functions vs Stored Procedure
--Window Function 
--Joining
-    -InnerJoin
-    -Left Join
-    -Right Join
-    -Full Join
-    -Self Join
+#Union vs Union all
+    ->Union: Combine data from bultiple select statements in a single table but don't accept duplicate values
+    ->Union all: Same as union but accept duplicate values
+
+#Primary Key vs UniqueKey
+    ->Primary key creates clustered key by Defult where UniqueKey creates Non Clustered
+    ->Only one primary key per table where as many unique key can may created per table
+    ->Primary key cannot have NULL where unique key may have NULL 
+    ->But both can be a foreign key
+
+#Window Function
+    ->Used with Aggregate functions but it replaces group by statements.
+    ->In group by we have single row for each group but in window function we can have same number of the rows of the group members.
+
+#Joining
+    ->InnerJoin: Join tables with common values
+    ->Left Join: Take all the matched values first,then unmatched all the left table values
+    ->Right Join: Take all the matched values first,then unmatched all the right table values
+    ->Full Join: Join tables with or Without common values. Its a combination of left join and right join
+    ->Self Join: Joining between columns of the same table.
+
+#Constraints
+    ->NOT NULL 
+    ->UNIQUE 
+    ->DEFAULT: Created using default keyword. Just like default values in JS ES6.
+    ->INDEX
+        -Clustered & NON Clustered Index
+        -Both is used to make searching faster using B-tree
+        -Without indexing, searching is slower
+        -Clustered: Data stored in physical order, Change order of the data, Its faster than NON Clustered Only one per table
+        -NON CLustered: Logical Order, does not order the data. More than one NON Clustered index per table one Index may contain more than ore columns.
+
+#Delete vs Trucate
+    ->Delete: Delete data of row/rows based on condition; DML command; Can roleback after deletion.
+    ->Truncate: Delete data of entire table; DDL command; Can't roleback after deletion. Fatser than Delete
+
+#CHAR vs VARCHAR2
+    ->CHAR: If a column declared as CHAR(10) then it must contain exact 10 characters.
+    ->VARCHAR2: If a column declared as VARCHAR2(10) then it may contain any number of characters till the size.
+
+#Normalization
+    ->1NF:
+    ->2NF:
+    ->3NF:
+
+#Transaction
+    ->Savepoint:
+    ->Commit:
+    ->Roleback:
+
+#Trigger:
+
+#Functions vs Stored Procedure
+    ->If we need INSERT,UPDATE,DELETE; we must use Stored Procedure
+    ->Stored Procedure returns zero or many variables where function must returns a value
+    
