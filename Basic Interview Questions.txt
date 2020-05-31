@@ -1,0 +1,33 @@
+#Introduce Yourself:
+-----------------------------------------------------------------------------------------------------------------
+I am Mohammad Jaowat Raihan. I graduated BSC in CSSE from AIUB in 2017. After graduation, I joined my
+university software development department. I worked there as .net programmer. I worked there in two projects.
+An ERP system and a mobile app. Currently I am looking for a better opportunity in your company.
+
+
+#Why do you want to change the company
+-----------------------------------------------------------------------------------------------------------------
+I have worked there more than two years and i realized that this is not the company i can work in longer. The culture 
+here is not to explore technologies. For example, ASP.NET CORE 3.1 is available. But stil, no one was from there 
+interested switching newer technologies. Also, i don't see any growth in there. And the salary package also not 
+impressive to me. SO those are the reasons why i am trying to switch.
+
+
+#Describe these projects 
+-----------------------------------------------------------------------------------------------------------------
+1.ERP: This system is basically a Dairy Firms ERP. The firm is sister concern of AIUB. The system is developed
+using ASP.NET WEB API in the backend along with SQL Server and AngularJS in the client side as a 
+Single Page Application. And we used Telerik reporting as Reporting tool. I was responsible for getting requirements
+from clients designing databases creating APIs and client side code to consume those APIs.
+
+2.Mobile App: This mobile app titles "AIUB Portal". You can find Android version in play store. This is a hybrid Application.
+We used ASP.NET API in the server side and Ionic4 in the client side. The users of this app is Students, Teachers & 
+Employees of AIUB.In this app, a student can view course results, download notes, get notifications and view notices 
+that are postedby faculty. A teacher can post notices upload notes and results. Teachers and Employees also view their 
+daily attendances in this app.
+
+#Why choosing Ionic4
+-----------------------------------------------------------------------------------------------------------------
+When we started thinking of making an app, we thought that we all are from c# background and doing native android and
+ios app has at least 6months of learning curve. SO my team lead told me to suggest him hybrid technologies and I found
+Ionic a good match because it uses HTML,CSS,Angular which i already knew. So i suggested him this and he accepted it.
