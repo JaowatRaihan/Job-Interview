@@ -8,8 +8,8 @@ An ERP system and a mobile app. Currently I am looking for a better opportunity 
 #Why do you want to change the company
 -----------------------------------------------------------------------------------------------------------------
 I have worked there more than two years and i realized that this is not the company i can work in longer. The culture 
-here is not to explore technologies. For example, ASP.NET CORE 3.1 is available. But stil, no one was from there 
-interested switching newer technologies. Also, i don't see any growth in there. And the salary package also not 
+there is not to explore technologies. For example, ASP.NET CORE 3.1 is available in the market. But stil, no one was from there 
+interested switching newer technologies. Also, I don't see any new type of rojects innear future. And the salary package also not 
 impressive to me. SO those are the reasons why i am trying to switch.
 
 
@@ -28,6 +28,7 @@ daily attendances in this app.
 
 #Why choosing Ionic4
 -----------------------------------------------------------------------------------------------------------------
-When we started thinking of making an app, we thought that we all are from c# background and doing native android and
-ios app has at least 6months of learning curve. SO my team lead told me to suggest him hybrid technologies and I found
-Ionic a good match because it uses HTML,CSS,Angular which i already knew. So i suggested him this and he accepted it.
+So one day my boss told us we need to develop a new app for the university.It was my responsibility to choose technology for 
+the app.I thought that we all are from c# background and doing native android and ios app has at least 6months of learning curve.
+SO my team lead told me to suggest him hybrid technologies and I found Ionic a good match because it uses HTML,CSS,Angular which i 
+already knew. So i suggested him this and he accepted it.
