@@ -11,6 +11,12 @@
 #Window Function
     ->Used with Aggregate functions but it replaces group by statements.
     ->In group by we have single row for each group but in window function we can have same number of the rows of the group members.
+    ->RANK()
+    ->DENSE_RANK() [AN example where to determine the nth highest row or column]
+        with RESULT as
+        (select *, DENSE_RANK() over (Order by order_amount desc) as RANK from Orders)
+        Select * from RESULT 
+        where RANK=2
 
 #Joining
     ->InnerJoin: Join tables with common values
