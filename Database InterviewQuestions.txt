@@ -1,5 +1,5 @@
 #Union vs Union all
-    ->Union: Combine data from bultiple select statements in a single table but don't accept duplicate values
+    ->Union: Combine data from multiple select statements in a single table but don't accept duplicate values
     ->Union all: Same as union but accept duplicate values
 
 #Primary Key vs UniqueKey
@@ -8,15 +8,62 @@
     ->Primary key cannot have NULL where unique key may have NULL 
     ->But both can be a foreign key
 
-#Window Function
-    ->Used with Aggregate functions but it replaces group by statements.
-    ->In group by we have single row for each group but in window function we can have same number of the rows of the group members.
-    ->RANK()
-    ->DENSE_RANK() [AN example where to determine the nth highest row or column]
-        with RESULT as
-        (select *, DENSE_RANK() over (Order by order_amount desc) as RANK from Orders)
-        Select * from RESULT 
-        where RANK=2
+#group by vs partition by
+
+#Window Function - Over()
+
+    ->Order by 
+        -- Must provide
+    ->Partition by --Optional
+        --Optional
+        --Divides the rows into partitions. Replacement of group by
+    ->Range and Rows clause 
+        --Optional
+        --RANGE/ROWS BETWEEN UNBOUNDED PRECEEDING AND CURRENT ROW ..this this default
+        --RANGE: Treat duplicate rows as One row
+        --ROWS: Treat duplicate rows as Multiple rows
+        --UNBOUNDED PRECEEDING : From start of the table..i.e: Firth Row
+        --UNBOUNDED PRECEEDING : Last row of the table
+        --1 PRECEEDING and 1 FOLLOWING: Previous row, current row, next row. 
+
+    ->Aggregate Window Functions
+        --SUM() 
+        --MAX() 
+        --MIN()
+        --AVG()
+        --COUNT()
+
+    ->Ranking Window Functions
+        --RANK()
+        --DENSE_RANK()
+        --ROW_NUMBER()
+        --Difference between these three(When getting duplicate rows):
+
+                RANK  ---------------- DENSE_RANK ------------------ROW_NUMBER
+                
+                  1                         1                           1
+                  1                         1                           2
+                  1                         1                           3
+                  4                         2                           4
+                  4                         2                           5
+                  6                         3                           6
+
+        --NTILE()
+            ---Takes an integer argument that specifies how many parts or tiles the table have
+            ---If the table has 10 rows, NTILE(2) Divides the rows into 2 parts..5 each
+            ---If the table has 10 rows, NTILE(3) Divides the rows into 3 parts.. 4,3,3 each
+
+    ->Value Window Functions
+        --LAG(column_name, offset, default_value)
+        --LEAD(column_name, offset, default_value)
+            ---First Argument is mandatory
+            ---Offset:Number of rows Above or Below
+            ---Default: If now row found Above or Below, specify the default value
+        --FIRST_VALUE(column_name)
+            ---Returns column value of the first row
+        --LAST_VALUE(column_name)
+            ---Returns column value of the first row
+            ---Provide RANGE or ROWS with UNBOUNDED PRECEEDING and UNBOUNDED FOLLOWING clause to get proper result. 
 
 #Joining
     ->InnerJoin: Join tables with common values
@@ -32,9 +79,17 @@
     ->INDEX
         -Clustered & NON Clustered Index
         -Both is used to make searching faster using B-tree
-        -Without indexing, searching is slower
-        -Clustered: Data stored in physical order, Change order of the data, Its faster than NON Clustered Only one per table
-        -NON CLustered: Logical Order, does not order the data. More than one NON Clustered index per table one Index may contain more than ore columns.
+        -One Index may contain more than ore columns.
+        -Clustered: 
+            --Data stored in physical order 
+            --Change order of the data
+            --Faster than NON Clustered
+            --Only one per table
+        -NON CLustered: 
+            --Logical Order
+            --Does not order the data 
+            --More than one NON Clustered index per table 
+        
 
 #Delete vs Trucate
     ->Delete: Delete data of row/rows based on condition; DML command; Can roleback after deletion.
@@ -55,8 +110,107 @@
     ->Roleback:
 
 #Trigger:
+    ->DML Triggers (Insert, update, delete)
+        -After triggers (Sometimes called as FOR triggers)
+            Example: 
+
+            create trigger trigger_name
+            on table_name
+            for insert/delete
+            as
+            begin
+                declare @id int
+                select @id=id from inserted/deleted
+                [inserted is a magic table that holds inserted row and only accecible to the current context of the trigger]
+                insert into table_name values
+                (
+                    
+                )
+            end
+
+        -Instead of triggers
+    -DDL Triggers
+    -CLR triggers
+    -Logon triggers
+
+#Cursor
+    ->line by line looping
+    ->@@FETCH_STATUS 
+        --(0) - The FETCH statement was successful.
+        --(-1) - The FETCH statement failed or the row was beyond the result set.
+        --(-2) - The row fetched is missing.
+        --(-9) - The cursor is not performing a fetch operation.
 
 #Functions vs Stored Procedure
     ->If we need INSERT,UPDATE,DELETE; we must use Stored Procedure
-    ->Stored Procedure returns zero or many variables where function must returns a value
+    ->Stored Procedure returns zero or many values where function must returns a value
+    ->Function does not support output parameters
+
+#Benifits of using Stored Procedure
+    ->Reduce network traffic by sending few words rather than sending 50lines of code
+    ->Re-usage the execution plan
+    ->Resusability and Maintainability
+    ->Security- by giving access only to stored procedure
+
+#Eager loading and Lazy Loading
+
+#Views
+
+###T-SQL Syntaxes:
+
+    ->OFFSET: 
+        -Skipping row numbers
+        -Order by clause required
+        -Example: Suppose we want to develop pagination. So we can use like this:
+            CREATE PROCEDURE spGetRowsByPageNumberAndSize
+                @PageNumber INT,
+                @PageSize INT
+            AS
+            BEGIN
+                SELECT * FROM table_name
+                ORDER BY column_list
+                OFFSET (@PageNumber - 1) * @PageSize ROWS
+                FETCH NEXT @PageSize ROWS ONLY
+            END
+
+    ->len() vs datalength()
+        -len counts characters where datalength counts how many bytes
+            declare @v int
+            --declare @v nvarchar(max)
+            set @v = 1 (output len=1, datalen=4)
+            --set @v = '1' (output len=1, datalen=2)
+            select len(@v),datalength(@v)
+
+    ->REPLICATE(string, integer) 
+        -Repeats a string a specified number of times
+
+    ->CAST(value AS type) vs CONVERT(type, value)
+        -Both used to converting value
+        -CAST in general sql language where convert is SQL SERVER specific
+            --SELECT CONVERT(int, 25.65).... ans: 25
+            --SELECT CAST(25.65 as int).... ans: 25
+    
+
+    ->use [table_name or column_name] when the name is reserved keywords by sql server 
+
+    ->create table #table_name vs declare @variable_name table
+        -create a table in tempDB for both
+        -for larger dataset, use create table where smaller data set use declare
+
+    - <> Not equal to
+
+    ->Replace(original_string, word_to_change, word_by_change)
+        -REPLACE('It is a good tea at the famous tea store.', 'tea', 'coffee') result
+            result = It is a good coffee at the famous coffee store.
+
+    -Insert data from other table
+        --insert into destination_table_name(column names) select (column names) from table_name 
+                        [Here, destination table must be created before]
+                                        OR
+        --select (column names) into destination_table_name(column names) 
+                        [Here, destination table created on the fly and must not create before]
+
+
+    
+
     

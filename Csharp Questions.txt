@@ -1,0 +1,6 @@
+##Var vs dynamic
+    ->Dynamic:
+        --It's a object, but enhances object into next level by doing boxing and unboxing internally
+        --Checks error on runtime
+    ->Var 
+        --var is statically typed variable

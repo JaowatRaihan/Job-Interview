@@ -10,7 +10,7 @@ An ERP system and a mobile app. Currently I am looking for a better opportunity 
 I have worked there more than two years and i realized that this is not the company i can work in longer. The culture 
 there is not to explore technologies. For example, ASP.NET CORE 3.1 is available in the market. But stil, no one was from there 
 interested switching newer technologies. Also, I don't see any new type of rojects innear future. And the salary package also not 
-impressive to me. SO those are the reasons why i am trying to switch.
+impressive to me. So those are the reasons why i am trying to switch.
 
 
 #Describe these projects 
