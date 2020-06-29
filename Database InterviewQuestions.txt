@@ -121,7 +121,7 @@
             begin
                 declare @id int
                 select @id=id from inserted/deleted
-                [inserted is a magic table that holds inserted row and only accecible to the current context of the trigger]
+                [inserted/deleted is a magic table that holds inserted/deleted row and only accecible to the current context of the trigger]
                 insert into table_name values
                 (
                     
